@@ -2,6 +2,8 @@
 
 This is a simple React To Do project, based on Create React App scaffolding.
 
+![Alt Text](https://media.giphy.com/media/1kJ0yVkEZaTsQMYfWt/giphy.gif)
+
 ## How to run
 
 You need the following dependencies:
