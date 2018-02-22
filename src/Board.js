@@ -5,9 +5,6 @@ class Board extends Component {
   render() {
     return (
       <div className='Board'>
-        <div className='Title'>
-          {this.props.title}
-        </div>
         <div className='Content'>
           {this.renderTasks()}
         </div>
@@ -21,6 +18,8 @@ class Board extends Component {
 
       return (
         <Task id={id}
+              availableBoards={this.props.availableBoards}
+              onStatusChange={this.props.onTaskStatusChange}
               onRemove={this.props.onTaskRemove}
               key={id}
               description={description}
