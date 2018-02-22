@@ -3,15 +3,16 @@ import Board from './Board';
 import TaskCreator from './TaskCreator';
 import './App.css';
 
-const tasks = [
-  { id: 1, description: 'The first', status: 'pending' },
-  { id: 2, description: 'The second', status: 'pending' },
-  { id: 3, description: 'The third', status: 'completed' }
-];
-
-const statuses = [ 'pending', 'completed' ];
-
 class App extends Component {
+  state = {
+    tasks: [
+      { id: 1, description: 'The first', status: 'pending' },
+      { id: 2, description: 'The second', status: 'pending' },
+      { id: 3, description: 'The third', status: 'completed' }
+    ],
+    statuses: [ 'pending', 'completed' ]
+  }
+
   render() {
     return (
       <div className='App'>
@@ -22,6 +23,8 @@ class App extends Component {
   }
 
   renderBoards() {
+    const { statuses, tasks } = this.state;
+
     return statuses.map(status => {
       return (
         <Board title={status}
