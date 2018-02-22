@@ -8,10 +8,17 @@ class Task extends Component {
           {this.props.description}
         </div>
         <div className='Actions'>
-          <button>remove</button>
+          <button onClick={this.onRemoveButtonClick}>
+            remove
+          </button>
         </div>
       </div>
     );
+  }
+
+  onRemoveButtonClick = (event) => {
+    event.preventDefault();
+    this.props.onRemove(this.props.id);
   }
 }
 

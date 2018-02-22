@@ -29,6 +29,7 @@ class App extends Component {
     return statuses.map(status => {
       return (
         <Board key={status}
+               onTaskRemove={this.onTaskRemove}
                title={status}
                tasks={ tasks.filter( x => x.status === status) } />
       );
@@ -52,6 +53,15 @@ class App extends Component {
     this.setState((prevState) => {
       return {
         tasks: [...prevState.tasks, task]
+      };
+    });
+  }
+
+  onTaskRemove = (id) => {
+    const index = this.state.tasks.findIndex(el => el.id === id)
+    index >= 0 && this.setState((prevState) => {
+      return {
+        tasks: prevState.tasks.filter((_, i) => i !== index)
       };
     });
   }

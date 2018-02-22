@@ -20,9 +20,10 @@ class Board extends Component {
       const { id, description, status } = task;
 
       return (
-        <Task id={id} 
+        <Task id={id}
+              onRemove={this.props.onTaskRemove}
               key={id}
-              description={description} 
+              description={description}
               status={status} />
       );
     });
