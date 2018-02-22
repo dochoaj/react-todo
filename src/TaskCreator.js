@@ -19,6 +19,11 @@ class TaskCreator extends Component {
     );
   }
 
+  beforeCreateTask(description) {
+    this.setState({ description: '' })
+    this.props.onTaskAddition(description)
+  }
+
   onDescriptionChange = (event) => {
     const description = event.target.value;
     this.setState({ description });
@@ -26,7 +31,7 @@ class TaskCreator extends Component {
 
   onAddButtonClick = (event) => {
     const { description } = this.state;
-    this.state.description.trim() !== '' && this.props.onTaskAddition(description)
+    this.state.description.trim() !== '' && this.beforeCreateTask(description)
   }
 }
 
