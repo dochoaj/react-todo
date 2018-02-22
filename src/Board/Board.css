@@ -1,0 +1,12 @@
+.Board {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.Board .Content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}

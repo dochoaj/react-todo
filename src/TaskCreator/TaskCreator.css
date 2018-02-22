@@ -1,0 +1,20 @@
+.Task-creator {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.Task-creator input {
+  width: 30%;
+}
+
+.Task-creator button {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.Task-creator button:hover {
+  background-color: greenyellow;
+  border-color: green;
+}

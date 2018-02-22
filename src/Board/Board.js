@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Task from './Task';
+import Task from '../Task/Task';
+import './Board.css';
 
 class Board extends Component {
   render() {

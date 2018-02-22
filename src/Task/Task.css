@@ -1,0 +1,37 @@
+.Task {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid grey;
+  justify-content: space-between;
+}
+
+.Task .Description {
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.Task .Actions {
+  display: flex;
+}
+
+.Task .Actions button {
+  cursor: pointer;
+}
+
+.Task .Actions button:hover {
+  background-color: rgb(230, 68, 68);
+  border-color: red;
+  color: white;
+}
+
+.Task .Actions .Status {
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}

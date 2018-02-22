@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import uid from 'uid';
-import Board from './Board';
-import BoardFilter from './BoardFilter';
-import TaskCreator from './TaskCreator';
+import Board from '../Board/Board';
+import BoardFilter from '../BoardFilter/BoardFilter';
+import TaskCreator from '../TaskCreator/TaskCreator';
 import './App.css';
 
 class App extends Component {
@@ -20,10 +20,12 @@ class App extends Component {
     return (
       <div className='App'>
         <TaskCreator onTaskAddition={this.onTaskAddition} />
-        <BoardFilter current={this.props.currentFilter}
+        <BoardFilter current={this.state.currentFilter}
                      onFilterSelect={this.onFilterSelect}
                      availableBoards={['all', ...this.state.statuses]} />
-        {this.renderBoards()}
+        <div className='Board-container'>
+          {this.renderBoards()}
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import BoardFilterOption from './BoardFilterOption';
+import BoardFilterOption from '../BoardFilterOption/BoardFilterOption';
+import './BoardFilter.css';
 
 class BoardFilter extends Component {
   render() {
@@ -17,6 +18,7 @@ class BoardFilter extends Component {
   }
 
   renderOption(option) {
+    console.log(this.props.current, option);
     const isActive = this.props.current === option;
 
     return (

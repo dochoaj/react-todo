@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import './BoardFilterOption.css';
 
 class BoardFilterOption extends Component {
   render() {
-    const className = `Board-filter-option ${this.props.active && 'active'}`;
+    const className = this.props.active ? 'Selected' : 'Not-selected';
     return (
       <li className={className} onClick={this.onOptionClick}>{this.props.name}</li>
     );

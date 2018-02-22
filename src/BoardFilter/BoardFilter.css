@@ -1,0 +1,25 @@
+.Board-filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+}
+
+.Board-filter li {
+  cursor: pointer;
+  margin-left: 5px;
+  padding: 5px;
+  list-style-type: none;
+}
+
+.Board-filter .Selected {
+  background-color: aqua;
+}
+
+.Board-filter li:hover {
+  background-color: aqua;
+}
+
+.Board-filter li:first-child {
+  margin-left: 0;
+}

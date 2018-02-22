@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './TaskCreator.css';
 
 class TaskCreator extends Component {
   state = {
@@ -13,7 +14,7 @@ class TaskCreator extends Component {
                value={ this.state.description }
                onChange= {this.onDescriptionChange} />
         <button onClick={this.onAddButtonClick}>
-          Add
+          +
         </button>
       </div>
     );

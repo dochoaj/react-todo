@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Task.css';
 
 class Task extends Component {
   render() {
@@ -11,12 +12,15 @@ class Task extends Component {
         </div>
         <div className='Actions'>
           <button onClick={this.onRemoveButtonClick}>
-            remove
+            x
           </button>
-          <select value={status} onChange={this.onTaskStatusChange}>
-            <option value='none' disabled>Move to...</option>
-            {this.renderOptions()}
-          </select>
+          <div className='Status'>
+            <span>status: </span>
+            <select value={status} onChange={this.onTaskStatusChange}>
+              <option value='none' disabled>Move to...</option>
+              {this.renderOptions()}
+            </select>
+          </div>
         </div>
       </div>
     );
