@@ -20,7 +20,10 @@ class Board extends Component {
       const { id, description, status } = task;
 
       return (
-        <Task id={id} description={description} status={status} />
+        <Task id={id} 
+              key={id}
+              description={description} 
+              status={status} />
       );
     });
   }

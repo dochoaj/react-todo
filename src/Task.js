@@ -8,7 +8,7 @@ class Task extends Component {
           {this.props.description}
         </div>
         <div className='Actions'>
-          <a href='#'>remove</a>
+          <button>remove</button>
         </div>
       </div>
     );

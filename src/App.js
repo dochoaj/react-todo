@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uid from 'uid';
 import Board from './Board';
 import TaskCreator from './TaskCreator';
 import './App.css';
@@ -16,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <TaskCreator />
+        <TaskCreator onTaskAddition={this.onTaskAddition} />
         {this.renderBoards()}
       </div>
     );
@@ -27,9 +28,31 @@ class App extends Component {
 
     return statuses.map(status => {
       return (
-        <Board title={status}
+        <Board key={status}
+               title={status}
                tasks={ tasks.filter( x => x.status === status) } />
       );
+    });
+  }
+
+  generateTask(description) {
+    return {
+      id: uid(),
+      description,
+      status: this.firstTaskStatus()
+    };
+  }
+
+  firstTaskStatus() {
+    return this.state.statuses[0]
+  }
+
+  onTaskAddition = (taskDescription) => {
+    const task = this.generateTask(taskDescription);
+    this.setState((prevState) => {
+      return {
+        tasks: [...prevState.tasks, task]
+      };
     });
   }
 }
