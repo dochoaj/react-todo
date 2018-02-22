@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import uid from 'uid';
 import Board from './Board';
+import BoardFilter from './BoardFilter';
 import TaskCreator from './TaskCreator';
 import './App.css';
 
@@ -11,25 +12,34 @@ class App extends Component {
       { id: 2, description: 'The second', status: 'pending' },
       { id: 3, description: 'The third', status: 'completed' }
     ],
-    statuses: [ 'pending', 'completed' ]
+    statuses: [ 'pending', 'completed' ],
+    currentFilter: 'all'
   }
 
   render() {
     return (
       <div className='App'>
         <TaskCreator onTaskAddition={this.onTaskAddition} />
+        <BoardFilter current={this.props.currentFilter}
+                     onFilterSelect={this.onFilterSelect}
+                     availableBoards={['all', ...this.state.statuses]} />
         {this.renderBoards()}
       </div>
     );
   }
 
   renderBoards() {
-    const { statuses, tasks } = this.state;
+    const { statuses, tasks, currentFilter } = this.state;
+    let filteredStatuses = statuses;
 
-    return statuses.map(status => {
+    if (currentFilter !== 'all') {
+      filteredStatuses = statuses.filter(x => x === currentFilter)
+    }
+
+    return filteredStatuses.map(status => {
       return (
         <Board key={status}
-               availableBoards={this.state.statuses}
+               availableBoards={statuses}
                onTaskStatusChange={this.onTaskStatusChange}
                onTaskRemove={this.onTaskRemove}
                title={status}
@@ -78,6 +88,10 @@ class App extends Component {
       const tasks = [...prevState.tasks.filter((_, i) => i !== index), task];
       return { tasks };
     });
+  }
+
+  onFilterSelect = (currentFilter) => {
+    this.setState({ currentFilter });
   }
 }
 
