@@ -13,18 +13,44 @@ class App extends Component {
       { id: 3, description: 'The third', status: 'completed' }
     ],
     statuses: [ 'pending', 'completed' ],
-    currentFilter: 'all'
+    currentFilter: 'all',
+    pilots: 'Loading...'
+  }
+
+  componentDidMount() {
+    fetch('https://swapi.co/api/starships/?search=Millennium%20Falcon&format=json')
+      .then(raw => {
+        return raw.json();
+      })
+      .then(response => {
+        return fetch(`${response.results[0].url}?format=json`)
+          .then(raw => {
+            return raw.json();
+          })
+          .then(response => {
+            let promises = response.pilots.map(url => fetch(`${url}?format=json`).then(x => x.json()));
+            Promise.all(promises).then(results => {
+              const pilots = results.map(x => x.name).join(', ')
+              this.setState({ pilots });
+            });
+          });
+      });
   }
 
   render() {
     return (
       <div className='App'>
-        <TaskCreator onTaskAddition={this.onTaskAddition} />
-        <BoardFilter current={this.state.currentFilter}
-                     onFilterSelect={this.onFilterSelect}
-                     availableBoards={['all', ...this.state.statuses]} />
-        <div className='Board-container'>
-          {this.renderBoards()}
+        <div className='main'>
+          <TaskCreator onTaskAddition={this.onTaskAddition} />
+          <BoardFilter current={this.state.currentFilter}
+                      onFilterSelect={this.onFilterSelect}
+                      availableBoards={['all', ...this.state.statuses]} />
+          <div className='Board-container'>
+            {this.renderBoards()}
+          </div>
+        </div>
+        <div className='Luke-is-not-dead'>
+          Millenium Falcon pilots: {this.state.pilots}
         </div>
       </div>
     );

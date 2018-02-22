@@ -18,7 +18,6 @@ class BoardFilter extends Component {
   }
 
   renderOption(option) {
-    console.log(this.props.current, option);
     const isActive = this.props.current === option;
 
     return (
