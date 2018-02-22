@@ -2,7 +2,7 @@
 
 This is a simple React To Do project, based on Create React App scaffolding.
 
-## How to run
+## How to run
 
 You need the following dependencies:
 
@@ -44,7 +44,7 @@ based on interactions. It has some dummy tasks to start and they can be modified
 
 * Task: A task who appears on screen. A task knows that it can change it status or even be deleted. But doesn't know how. This is the Smart-Dumb component pattern applied.
 
-## Application Architecture
+## Application Architecture
 
 The selected architecture is a classic deep down hierarchy. App component controls the main application state and it pass down all the required callbacks to modify state. If this application were connected to a backend, this is, in a React only approach, where the React Lifecycle methods should be used to make requests. For instance, to add a new task to the list, the actual pure function is defined on App (onTaskAddition) and is passed down to `TaskCreator` component, because this is where the user interaction actually is. When the user hit the button controlled by `TaskCreator` a callback is fired and this is where the `onTaskAddition` method is executed. The same pattern applies to the remaining CRUD operations.
 
